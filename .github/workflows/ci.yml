@@ -1,0 +1,16 @@
+name: Build C++ Project
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup MSBuild Path
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Build C++ Project
+      run: msbuild CppHelloWorld.sln /p:Configuration=Release /p:Platform="x64"
